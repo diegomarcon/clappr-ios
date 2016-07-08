@@ -11,8 +11,12 @@ public class AVFoundationPlayback: Playback {
     private var kvoStatusDidChangeContext = 0
     private var kvoTimeRangesContext = 0
     private var kvoBufferingContext = 0
-    
+
+    #if os(tvOS)
+    public private(set) var player: AVPlayer?
+    #else
     private var player: AVPlayer?
+    #endif
     private var playerLayer: AVPlayerLayer?
     private var currentState = PlaybackState.Idle
     
